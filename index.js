@@ -9,6 +9,17 @@ server.use((req, res, next) => {
     next();
 })
 
+function projectExists(req, res, next) {
+    const { id } = req.params;
+
+    const project = projects.find(p => p.id === id);
+
+    if (!project)
+        return res.status(400).json({ error: `Project doesn't exist` });
+
+    next();
+}
+
 let projects = [];
 
 server.post('/projects', (req, res) => {
@@ -23,28 +34,28 @@ server.get('/projects', (req, res) => {
     return res.json(projects);
 })
 
-server.put('/projects/:id', (req, res) => {
+server.put('/projects/:id', projectExists, (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
 
-    projects.find(p => p.id == id).title = title;
+    projects.find(p => p.id === id).title = title;
 
     return res.json(projects);
 })
 
-server.delete('/projects/:id', (req, res) => {
+server.delete('/projects/:id', projectExists, (req, res) => {
     const { id } = req.params;
 
-    projects = projects.filter(p => p.id != id)
+    projects = projects.filter(p => p.id !== id)
 
     return res.json({ message: `Project ${id} was deleted!` });
 })
 
-server.post('/projects/:id/tasks', (req, res) => {
+server.post('/projects/:id/tasks', projectExists, (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
 
-    projects.find(p => p.id == id).tasks.push(title)
+    projects.find(p => p.id === id).tasks.push(title)
 
     return res.json(projects);
 })
