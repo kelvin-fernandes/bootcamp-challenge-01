@@ -40,6 +40,15 @@ server.delete('/projects/:id', (req, res) => {
     return res.json({ message: `Project ${id} was deleted!` });
 })
 
+server.post('/projects/:id/tasks', (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    projects.find(p => p.id == id).tasks.push(title)
+
+    return res.json(projects);
+})
+
 const PORT = 3000;
 
 server.listen(PORT, () => {
