@@ -23,6 +23,15 @@ server.get('/projects', (req, res) => {
     return res.json(projects);
 })
 
+server.put('/projects/:id', (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+
+    projects[id].title = title;
+
+    return res.json(projects);
+})
+
 const PORT = 3000;
 
 server.listen(PORT, () => {
