@@ -19,6 +19,10 @@ server.post('/projects', (req, res) => {
     return res.json(projects);
 })
 
+server.get('/projects', (req, res) => {
+    return res.json(projects);
+})
+
 const PORT = 3000;
 
 server.listen(PORT, () => {
