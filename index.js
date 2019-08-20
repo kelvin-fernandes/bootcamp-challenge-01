@@ -27,9 +27,17 @@ server.put('/projects/:id', (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
 
-    projects[id].title = title;
+    projects.find(p => p.id == id).title = title;
 
     return res.json(projects);
+})
+
+server.delete('/projects/:id', (req, res) => {
+    const { id } = req.params;
+
+    projects.splice(id, 1);
+
+    return res.json({ message: `Project ${id} was deleted!` });
 })
 
 const PORT = 3000;
