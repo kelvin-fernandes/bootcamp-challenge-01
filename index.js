@@ -9,7 +9,7 @@ server.use((req, res, next) => {
     next();
 })
 
-const projects = [];
+let projects = [];
 
 server.post('/projects', (req, res) => {
     const project = req.body;
@@ -35,7 +35,7 @@ server.put('/projects/:id', (req, res) => {
 server.delete('/projects/:id', (req, res) => {
     const { id } = req.params;
 
-    projects.splice(id, 1);
+    projects = projects.filter(p => p.id != id)
 
     return res.json({ message: `Project ${id} was deleted!` });
 })
