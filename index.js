@@ -4,8 +4,10 @@ const server = express();
 
 server.use(express.json());
 
+let countReq = 1;
+
 server.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+    console.log(`${countReq++} ${req.method} ${req.url}`);
     next();
 })
 
