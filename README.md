@@ -1,45 +1,72 @@
-# Desafio 01. Conceitos do NodeJS
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-Crie uma aplicação do zero utilizando Express.
+<p align="center">
+  <h3 align="center">Rocketseat Bootcamp First Challenge</h3>
 
-Essa aplicação será utilizada para armazenar projetos e suas tarefas.
+  <p align="center">
+    CRUD of projects and their tasks
+    <br />
+  </p>
+</p>
 
-## Rotas
+## Table of Contents
 
-- `POST /projects`: A rota deve receber `id` e `title` dentro corpo de cadastrar um novo projeto dentro de um array no seguinte formato: `{ id: "1", title: 'Novo projeto', tasks: [] }`; Certifique-se de enviar tanto o ID quanto o título do projeto no formato string com àspas duplas.
+- [About](#about)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contact](#contact)
 
-- `GET /projects`: Rota que lista todos projetos e suas tarefas;
+## About
 
-- `PUT /projects/:id`: A rota deve alterar apenas o título do projeto com o `id` presente nos parâmetros da rota;
+This Restful api is a CRUD of projects and their tasks, made just for fun/learn.
 
-- `DELETE /projects/:id`: A rota deve deletar o projeto com o `id` presente nos parâmetros da rota;
+This challenge came from a bootcamp offered by @rocketseat, where we learn these following technologies: NodeJS, ReactJS and React Native.
 
-- `POST /projects/:id/tasks`: A rota deve receber um campo `title` e armazenar uma nova tarefa no array de tarefas de um projeto específico escolhido através do `id` presente nos parâmetros da rota;
+### Built With
 
-### Exemplo
+- [NodeJS](https://nodejs.org/)
+- [Express](https://expressjs.com/)
 
-Se eu chamar a rota `POST /projects` repassando `{ id: 1, title: 'Novo projeto' }` e a rota `POST /projects/1/tasks` com `{ title: 'Nova tarefa' }`, meu array de projetos deve ficar assim:
+## Getting Started
 
-```js
-[
-  {
-    id: "1",
-    title: 'Novo projeto',
-    tasks: ['Nova tarefa']
-  }
-]
+To get this project running locally, follow these simple steps below.
+
+### Prerequisites
+
+- [yarn](https://yarnpkg.com/en/docs/install)
+
+### Installation
+
+1. Clone the repo
+
+```sh
+git clone https://github.com/kelvin-fernandes/bootcamp-challenge-01.git
 ```
 
-## Middlewares
+2. Install dependencies packages
 
-- Crie um middleware que será utilizado em todas rotas que recebem o ID do projeto nos parâmetros da URL que verifica se o projeto com aquele ID existe. Se não existir retorne um erro, caso contrário permita a requisição continuar normalmente;
+```sh
+yarn
+```
 
-- Crie um middleware global chamado em todas requisições que imprime (`console.log`) uma contagem de quantas requisições foram feitas na aplicação até então;
+## Usage
 
-## Entrega
+Just run this
 
-Esse desafio **não precisa ser entregue** e não receberá correção, mas você pode ver o resultado do código do desafio aqui: https://github.com/Rocketseat/bootcamp-gostack-desafio-01
+```sh
+yarn dev #any modification and saving in js files will rerun the server
+```
 
-Após concluir o desafio, adicionar esse código ao seu Github é uma boa forma de demonstrar seus conhecimentos para oportunidades futuras.
+After that, install the [Imsomnia](https://insomnia.rest/download/) Rest Client, import the Imsomnia.json from the root folder and you'll have a full setup to make request and see the api working.
 
-“Sua única limitação é você mesmo”!
+## Contact
+
+Kelvin Fernandes - [@i4kelvin](https://instagram.com/i4mkelvin) - sokelvinfernandes@gmail.com
+
+Project Link: [https://github.com/kelvin-fernandes/bootcamp-challenge-01](https://github.com/kelvin-fernandes/bootcamp-challenge-01)
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=1178B3
+[linkedin-url]: https://linkedin.com/in/kelvin-fernandes
